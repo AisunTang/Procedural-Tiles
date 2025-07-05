@@ -14,6 +14,7 @@
 import bpy
 from . import menu
 from . import operators
+from .icons import Icon
 
 bl_info = {
     "name": "Proceduraltiles",
@@ -34,10 +35,12 @@ auto_load.ordered_classes = menu.CLASSES + operators.CLASSES
 
 
 def register():
+    Icon.register_icons()
     bpy.types.NODE_MT_add.append(menu.PT_add_node_menu)
     auto_load.register()
 
 
 def unregister():
+    Icon.unregister_icons()
     bpy.types.NODE_MT_add.remove(menu.PT_add_node_menu)
     auto_load.unregister()

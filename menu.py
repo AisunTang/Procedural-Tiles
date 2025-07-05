@@ -31,28 +31,24 @@ class PT_MT_Node_Sdf(bpy.types.Menu):
             item.menu(layout=self.layout, context=context)
 
 
-def draw_node_menu(self, context):
-    layout = self.layout
-    layout.menu(PT_MT_Node_General.bl_idname, text="Ready Patters", icon="TEXTURE")
-    layout.menu(
-        PT_MT_Node_WallpaperGroup.bl_idname, text="Wallpaper Group", icon="OUTLINER_OB_LATTICE"
-    )
-    layout.menu(PT_MT_Node_Sdf.bl_idname, text="Sign Distance Fields", icon="DRIVER_DISTANCE")
-
-
 class PT_MT_Node(bpy.types.Menu):
     bl_idname = "PT_MT_NODE"
     bl_label = "Menu for Adding Nodes in GN Tree"
 
     def draw(self, context):
-        draw_node_menu(self, context)
+        layout = self.layout
+        layout.menu(PT_MT_Node_General.bl_idname, text="Ready Patters", icon="TEXTURE")
+        layout.menu(
+            PT_MT_Node_WallpaperGroup.bl_idname, text="Wallpaper Group", icon="OUTLINER_OB_LATTICE"
+        )
+        layout.menu(PT_MT_Node_Sdf.bl_idname, text="Sign Distance Fields", icon="DRIVER_DISTANCE")
 
 
 def PT_add_node_menu(self, context):
     if "ShaderNodeTree" == bpy.context.area.spaces[0].tree_type:
         layout = self.layout
         layout.menu(
-            PT_MT_Node.bl_idname, text="Procedural Tiles Nodes", icon="IMAGE_REFERENCE"
+            PT_MT_Node.bl_idname, text="Procedural Tiles Nodes", icon="SEQ_CHROMA_SCOPE"
         )
 
 

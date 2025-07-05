@@ -1,6 +1,7 @@
 from bl_ui.properties_texture import texture_filter_common
 import bpy
-from typing import List
+
+from .icons import Icon
 
 from .operators import PT_OT_Add_Custom_Node_Group
 
@@ -10,14 +11,12 @@ class NodeGroupItem:
         self,
         name: str,
         label: str | None = None,
-        icon: str = "BLANK1",
         description: str = "",
     ) -> None:
         self.name = name
         self.label = label
         if self.label is None:
             self.label = self.name
-        self.icon = icon
         self.description = description
 
     def menu(
@@ -33,7 +32,7 @@ class NodeGroupItem:
         op = layout.operator(
             PT_OT_Add_Custom_Node_Group.bl_idname,
             text=self.label,
-            icon=self.icon,
+            icon_value=Icon.get_icon(self.name),
         )
         op.node_label = self.label
         op.node_name = self.name
@@ -50,20 +49,6 @@ class NodeGroupItem:
         }
 
 
-class NodeGroupMenu:
-    def __init__(self, name, items, title: str = None, description: str = None) -> None:
-        self.name: str = name
-        self.items: List[NodeGroupItem] = items
-        self.title = title
-        self.description = description
-
-    def menu(self, layout: bpy.types.UILayout, context: bpy.types.Context):
-        layout.separator()
-        layout.label(text=self.title)
-        for item in self.items:
-            item.menu(layout=layout, context=context)
-
-
 class Separator:
     def __init__(self) -> None:
         pass
@@ -73,34 +58,6 @@ class Separator:
 
 
 menu_items = {
-    # "RandomTestItems": [
-    #     NodeGroupItem(
-    #         label="Lopu",
-    #         name="PT_BoxStar",
-    #     ),
-    #     NodeGroupItem(
-    #         label="Ribbon",
-    #         name="Style Ribbon",
-    #     ),
-    #     NodeGroupMenu(
-    #         name="Hello Menu",
-    #         items=[
-    #             NodeGroupItem(
-    #                 label="Surface",
-    #                 name="Style Surface",
-    #             ),
-    #             NodeGroupItem(
-    #                 label="Surface",
-    #                 name="Style Surface",
-    #             ),
-    #             NodeGroupItem(
-    #                 label="Surface",
-    #                 name="Style Surface",
-    #             ),
-    #         ],
-    #         title="Idk",
-    #     ),
-    # ],
     "ProceduralTiles": [
         NodeGroupItem(label="BasicBrick", name="PT_BasicBrick"),
         NodeGroupItem(label="BoxStar", name="PT_BoxStar"),
@@ -113,7 +70,7 @@ menu_items = {
         NodeGroupItem(label="HexTile", name="PT_HexTile"),
         NodeGroupItem(label="HVBoards", name="PT_HVBoards"),
         NodeGroupItem(label="LampLikeTile", name="PT_LampLikeTile"),
-        NodeGroupItem(label="Penrose", name="PT_Penrose(Warning*)"),
+        NodeGroupItem(label="Penrose", name="PT_Penrose"),
         NodeGroupItem(label="PolyDiamond", name="PT_PolyDiamond"),
         NodeGroupItem(label="QuadFlower", name="PT_QuadFlower"),
         NodeGroupItem(label="RectV", name="PT_RectV"),

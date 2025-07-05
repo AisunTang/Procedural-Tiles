@@ -26,7 +26,7 @@ class PT_OT_Add_Custom_Node_Group(bpy.types.Operator):
 
     def execute(self, context):
         try:
-            utils.append_shader_nodetree(self.node_name, link=self.node_link)
+            utils.append_shader_nodetree(self.node_name)
             utils.add_node_group(self.node_name, context)  # , label=self.node_label)
         except RuntimeError:
             self.report(

@@ -20,7 +20,7 @@ bl_info = {
     "name": "Proceduraltiles",
     "author": "proceduralTiles",
     "description": "",
-    "blender": (4, 30, 0),
+    "blender": (4, 5, 0),
     "version": (0, 0, 1),
     "location": "",
     "warning": "",

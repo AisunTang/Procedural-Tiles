@@ -33,4 +33,4 @@ class Icon:
         if cls.icons and name in cls.icons:
             return cls.icons[name].icon_id
         else:
-            return 1  # defaults to "BLANK1"
+            return 4 # 'BLANK1'

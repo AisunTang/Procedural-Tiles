@@ -1,9 +1,9 @@
 schema_version = "1.0.0"
 
 id = "proceduraltiles"
-version = "0.0.2"
+version = "0.0.3"
 name = "Procedural Tiles"
-tagline = "Go expand that texture library!! with an entire set of custom procedural shader nodes."
+tagline = "A library of shader nodes. +100 new nodes"
 maintainer = "Aisun Tang"
 # Supported types: "add-on", "theme"
 type = "add-on"

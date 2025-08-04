@@ -11,10 +11,11 @@ def append_shader_nodetree(name: str):
 
     node_tree_name = "MyCustomNodeGroup"
 
-    bpy.ops.wm.append(
-        filepath=os.path.join(trees_path, node_tree_name),
-        directory=trees_path + "/",
-        filename=name,
+    if name not in bpy.data.node_groups:
+        bpy.ops.wm.append(
+            filepath=os.path.join(trees_path, node_tree_name),
+            directory=trees_path + "/",
+            filename=name,
     )
 
 

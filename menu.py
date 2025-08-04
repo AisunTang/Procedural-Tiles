@@ -3,6 +3,29 @@ import bpy
 from bpy.ops import text
 from .menuItems import menu_items
 
+class PT_MT_Node_General(bpy.types.Menu):
+    bl_idname = "PT_MT_NODE_GENERAL"
+    bl_label = ""
+
+    def draw(self, context):
+        for item in menu_items["General"]:
+            item.menu(layout=self.layout, context=context)
+
+class PT_MT_Node_Arabic(bpy.types.Menu):
+    bl_idname = "PT_MT_NODE_ARB"
+    bl_label = ""
+
+    def draw(self, context):
+        for item in menu_items["Arabic"]:
+            item.menu(layout=self.layout, context=context)
+
+class PT_MT_Node_Random(bpy.types.Menu):
+    bl_idname = "PT_MT_NODE_TCH"
+    bl_label = ""
+
+    def draw(self, context):
+        for item in menu_items["Random"]:
+            item.menu(layout=self.layout, context=context)
 
 class PT_MT_Node_WallpaperGroup(bpy.types.Menu):
     bl_idname = "PT_MT_NODE_WPG"
@@ -11,16 +34,6 @@ class PT_MT_Node_WallpaperGroup(bpy.types.Menu):
     def draw(self, context):
         for item in menu_items["WallpaperGroups"]:
             item.menu(layout=self.layout, context=context)
-
-
-class PT_MT_Node_General(bpy.types.Menu):
-    bl_idname = "PT_MT_NODE_TCH"
-    bl_label = ""
-
-    def draw(self, context):
-        for item in menu_items["ProceduralTiles"]:
-            item.menu(layout=self.layout, context=context)
-
 
 class PT_MT_Node_Sdf(bpy.types.Menu):
     bl_idname = "PT_MT_NODE_SDF"
@@ -37,7 +50,10 @@ class PT_MT_Node(bpy.types.Menu):
 
     def draw(self, context):
         layout = self.layout
-        layout.menu(PT_MT_Node_General.bl_idname, text="Ready Patters", icon="TEXTURE")
+        layout.menu(PT_MT_Node_General.bl_idname, text="General Tiles", icon="MESH_GRID")
+        layout.menu(PT_MT_Node_Arabic.bl_idname, text="Arabic Patters", icon="SOLO_ON")
+        layout.menu(PT_MT_Node_Random.bl_idname, text="Organic/Random", icon="POINTCLOUD_POINT")
+        layout.separator()
         layout.menu(
             PT_MT_Node_WallpaperGroup.bl_idname, text="Wallpaper Group", icon="OUTLINER_OB_LATTICE"
         )
@@ -49,7 +65,14 @@ def PT_add_node_menu(self, context):
         layout = self.layout
         layout.menu(
             PT_MT_Node.bl_idname, text="Procedural Tiles Nodes", icon="SEQ_CHROMA_SCOPE"
-        )
+    )
 
 
-CLASSES = [PT_MT_Node, PT_MT_Node_Sdf, PT_MT_Node_General, PT_MT_Node_WallpaperGroup]
+CLASSES = [
+    PT_MT_Node, 
+    PT_MT_Node_General, 
+    PT_MT_Node_Arabic,
+    PT_MT_Node_Random,
+    PT_MT_Node_WallpaperGroup,
+    PT_MT_Node_Sdf
+]

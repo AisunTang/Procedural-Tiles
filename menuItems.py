@@ -1,8 +1,5 @@
-from bl_ui.properties_texture import texture_filter_common
 import bpy
-
 from .icons import Icon
-
 from .operators import PT_OT_Add_Custom_Node_Group
 
 

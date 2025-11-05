@@ -4,7 +4,7 @@ from . import utils
 
 
 class PT_OT_Add_Custom_Node_Group(bpy.types.Operator):
-    bl_idname = "pt.add_custom_node_group"
+    bl_idname = "node.add_custom_node_group"
     bl_label = "Add Custom Node Group"
     bl_description = "Add new node"
     bl_options = {"REGISTER", "UNDO"}
